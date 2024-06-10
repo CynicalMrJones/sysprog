@@ -23,7 +23,7 @@ int main(){
     }
     bubbleSort(lastName, firstName, ages, numberToList);
 
-    printf("These are the names and ages in order");
+    printf("These are the names and ages in order\n");
     for (int i = 0; i < numberToList; i++) {
         printf("%s %s %d\n", lastName[i], firstName[i], ages[i]);
     }
