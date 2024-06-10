@@ -1,12 +1,10 @@
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <string.h>
 
 #define ARRAYSIZE 20
 
 void bubbleSort(char lastName[ARRAYSIZE][50], char firstName[ARRAYSIZE][50], int age[], int numberToList);
-void swap(int* i,int* j);
 
 int main(){
     char firstName[ARRAYSIZE][50];
@@ -21,6 +19,7 @@ int main(){
     }
     bubbleSort(lastName, firstName, ages, numberToList);
 
+    printf("These are the names and ages in order");
     for (int i = 0; i < numberToList; i++) {
         printf("%s %s %d\n", lastName[i], firstName[i], ages[i]);
     }
@@ -47,10 +46,3 @@ void bubbleSort(char lastName[ARRAYSIZE][50], char firstName[ARRAYSIZE][50], int
         }
     }
 }
-
-void swap(int* i, int* j){
-    int temp = *i;
-    *i = *j;
-    *j = temp;
-}
-
