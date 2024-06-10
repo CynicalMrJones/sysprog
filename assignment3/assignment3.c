@@ -7,17 +7,24 @@ void swap(char *x, char *y);
 
 int main(){
     char* ptr;
-    int n, i;
+    int n;
+    char ch = '\0';
 
     printf("How many chars is the string: ");
     scanf("%d", &n);
-    ptr = (char*)malloc(n * sizeof(char));
+    ptr = (char*)calloc(n, sizeof(char));
 
     printf("Please give the string: ");
-    scanf("%c", ptr);
-
-    for (int i = 0; i < n; i++) {
-        printf("%c ", ptr[i]);
+    for (int i = 0; i < n+1; i++) {
+            scanf("%c", ptr + i);
     }
+    //I don't know whats happening here. For some reason its printing a 
+    //null or empty char before it prints the rest.
+    //I might have to reach out to the professor.
+    for (int i = 0; i < n+1; i++) {
+        printf("%c, ", *(ptr + i));
+    }
+
+    free(ptr);
 
 }
