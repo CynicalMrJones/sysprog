@@ -1,4 +1,8 @@
 
+//Jacob Jones
+//CIS 340
+//Results: The user inputs an array of first names and last names and their ages
+//It then sorts them and retuns them to the user
 #include <stdio.h>
 #include <string.h>
 
@@ -14,7 +18,7 @@ int main(){
     printf("How many people would you like to list: ");
     scanf("%d", &numberToList);
     for (int i = 0; i < numberToList; i++) {
-        printf("Please enter last name, first name, and age: ");
+        printf("Please enter last name, first name, and age(Put spaces inbetween each): ");
         scanf("%s %s %d", lastName[i],firstName[i], &ages[i]);
     }
     bubbleSort(lastName, firstName, ages, numberToList);
@@ -26,7 +30,6 @@ int main(){
 }
 
 
-//Leaving off here need to implement bubble sort on multiple arrays
 void bubbleSort(char lastName[ARRAYSIZE][50], char firstName[ARRAYSIZE][50], int ages[], int numberToList){
     int i, j, temp2;
     char temp[50];
