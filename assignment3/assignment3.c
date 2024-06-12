@@ -18,13 +18,19 @@ int main(){
     for (int i = 0; i < n+1; i++) {
             scanf("%c", ptr + i);
     }
-    //I don't know whats happening here. For some reason its printing a 
-    //null or empty char before it prints the rest.
-    //I might have to reach out to the professor.
-    for (int i = 0; i < n+1; i++) {
-        printf("%c, ", *(ptr + i));
-    }
+    //for (int i = 0; i < n; i++) {
+    //    printf("%c, ", *(ptr + i + 1));
+    //}
+    
+    sort(ptr,n);
 
     free(ptr);
 
+}
+
+void sort(char *a, int size){
+    for (int i = 0; i < size; i++) {
+        //Leaving off here need to sort by ascii table codes
+        printf("%c, ", *(a + i + 1));
+    }
 }
