@@ -18,18 +18,23 @@ int main(){
     ptr[1] = (int *)calloc(n,sizeof(int));
 
     //now i need to prompt the user to input n+1 entries
-    //Stopping here gonna try again tomorrow
+    //Ok so this works for loading in the matrix. somehow
+    printf("Please input numbers: \n");
     for (int i = 0; i < n; i++) {
-        printf("Please input numbers: ");
         for (int j = 0; j < k; j++) {
-            scanf("%d %d", &ptr[i][j]);
+            scanf("%d", &ptr[i][j]);
         }
     }
+
     printf("\n");
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < k; j++) {
-            printf("%d %d\n", ptr[i][j], ptr[i+1][j]);
+            printf("%d ", ptr[i][j]);
         }
+        printf("\n");
     }
+
+    free(ptr);
 
 }
