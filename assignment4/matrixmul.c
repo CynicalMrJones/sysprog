@@ -1,40 +1,80 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-//Given an n x k matrix A and an k x m matrix B, with 1 ≤ n, m,k ≤ 300, write a C program
-//that computes the matrix product C=AB. All entries in matrices A and B are integers
-//with absolute value less than 1000, so you don't need to worry about overflow. If
-//matrices A and B do not have the right dimensions to be multiplied, the product
-//matrix C should have its number of rows and columns both set to zero.
-int main(){
-    //First things first i need to get input the way written in the assignment
-    int n,k;
-    printf("Please input the size of matrix A (seperated by spaces): ");
-    scanf("%d %d",&n, &k);
-    //Now i need to create a matrix...trying to decide if i should use pointers or an array
-    int **ptr;
-    ptr = (int **)calloc(n,sizeof(int *));
-    ptr[0] = (int *)calloc(k,sizeof(int));
-    ptr[1] = (int *)calloc(n,sizeof(int));
 
-    //now i need to prompt the user to input n+1 entries
-    //Ok so this works for loading in the matrix. somehow
+
+int main(){
+
+    //Getting input from the user
+    int n,k,m,v;
+    printf("Please input the size of Matrix A (seperated by spaces): ");
+    scanf("%d %d",&n, &k);
+
+    //Dynamically allocating Matrix A
+    int** matrix = (int**)calloc(n, sizeof(int*));
+    for (int i = 0; i < n; i++){
+        matrix[i] = (int*)calloc(k, sizeof(int));
+    }
+
+    //Ok so this works for loading in the Matrix. somehow
     printf("Please input numbers: \n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < k; j++) {
-            scanf("%d", &ptr[i][j]);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    printf("\n");
+
+    //input for second matrix
+    printf("Please input the size of Matrix B (seperated by spaces): ");
+    scanf("%d %d",&v, &m);
+    //Small bit of logic to verify matrix sizes are compatible
+    if (v != k) {
+        printf("Invalid matrix size for multiplication");
+        free(matrix);
+        return(1);
+    }
+
+    //Dynamically allocating Matrix B
+    int** matrix2 = (int**)calloc(k, sizeof(int*));
+    for (int i = 0; i < k; i++){
+        matrix2[i] = (int*)calloc(m, sizeof(int));
+    }
+
+    printf("Please input numbers: \n");
+    for (int i = 0; i < k; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matrix2[i][j]);
         }
     }
 
-    printf("\n");
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < k; j++) {
-            printf("%d ", ptr[i][j]);
+    //Dynamically allocating Matrix C
+    int** matrix3 = (int**)calloc(n, sizeof(int*));
+    for (int i = 0; i < n; i++){
+        matrix3[i] = (int*)calloc(m, sizeof(int));
+    }
+
+    //This is what does the multiplication of the Matrix
+    for (int i = 0; i<n; i++) {
+        for (int j = 0; j<m; j++) {
+            for (int x = 0; x<k; x++) {
+                matrix3[i][j] += (matrix[i][x] * matrix2[x][j]);
+            }
+        }
+    }
+
+    //Printing out the resulting Matrix
+    printf("\n");
+    for (int i = 0; i<n; i++) {
+        for (int j = 0; j<m; j++) {
+            printf("%d ", matrix3[i][j]);
         }
         printf("\n");
     }
-
-    free(ptr);
+    //Freeing memory 
+    free(matrix);
+    free(matrix2);
+    free(matrix3);
 
 }
