@@ -1,7 +1,12 @@
 
+// Jacob Jones
+// CIS 340
+// Results: 
+// 1) Ask the user for a size matrix A and ask them to input the matrix 
+// 2) Ask them to input a matrix size for the matrix B and have them input it 
+// 3) Returns matrix C which is A*B
 #include <stdlib.h>
 #include <stdio.h>
-
 
 int main(){
 
